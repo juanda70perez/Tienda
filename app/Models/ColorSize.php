@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,38 +22,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ColorSize extends Model
 {
-    
-    static $rules = [
-		'color_id' => 'required',
-		'size_id' => 'required',
-		'quantity' => 'required',
-    ];
 
-    protected $perPage = 20;
+    use HasFactory;
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['color_id','size_id','quantity'];
+    protected $table = "color_size";
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function color()
-    {
-        return $this->hasOne('App\Models\Color', 'id', 'color_id');
+    //Relacion uno a mucos inversa
+    public function color(){
+        return $this->belongsTo(Color::class);
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function size()
-    {
-        return $this->hasOne('App\Models\Size', 'id', 'size_id');
+
+    public function size(){
+        return $this->belongsTo(Size::class);
     }
-    
 
 }

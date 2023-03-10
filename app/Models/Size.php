@@ -38,6 +38,9 @@ class Size extends Model
     {
         return $this->hasMany('App\Models\ColorSize', 'size_id', 'id');
     }
+    public function brand(){
+        return $this->belongsTo(Brand::class);
+    }
 
     public function product(){
         return $this->belongsTo(Product::class);
@@ -45,5 +48,8 @@ class Size extends Model
     public function colors()
     {
         return $this->belongsToMany(Color::class);
+    }
+    public function sizes(){
+        return $this->hasMany(Size::class);
     }
 }

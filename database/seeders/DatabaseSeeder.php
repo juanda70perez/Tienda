@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Color;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
@@ -33,5 +34,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(SubcategorySeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(ColorSeeder::class);
+        $this->call(ColorProductSeeder::class);
+        $this->call(SizeSeeder::class);
+        $this->call(ColorSizeSeeder::class);
     }
 }
