@@ -132,6 +132,7 @@
     "Showing": "Mostrando",
     "Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.": "Guarde estos códigos de recuperación en un administrador de contraseñas seguro. Se pueden utilizar para recuperar el acceso a su cuenta si pierde su dispositivo de autenticación de dos factores.",
     "Switch Teams": "Cambiar de equipo",
+    "Subcategories": "Subcategorías",
     "Team Details": "Detalles del equipo",
     "Team Invitation": "Invitación de equipo",
     "Team Members": "Miembros del equipo",
@@ -188,5 +189,6 @@
     "You may delete any of your existing tokens if they are no longer needed.": "Puede eliminar cualquiera de sus tokens existentes si ya no los necesita.",
     "You may not delete your personal team.": "No se puede borrar su equipo personal.",
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
+    "You not have items": "No tienes articulos",
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada."
 }

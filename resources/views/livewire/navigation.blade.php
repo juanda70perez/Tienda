@@ -1,4 +1,12 @@
-<header class="bg-trueGray-700">
+<style>
+    #navigation-menu{
+        height: calc(100vh - 4rem);
+    }
+    .navigation-link:hover .navigation-submenu{
+        display: block !important;
+    }
+</style>
+<header class="bg-trueGray-700 sticky top-0">
     <div class='container flex items-center h-16'>
         <a
             class="flex flex-col items-center justify-center bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
@@ -13,7 +21,7 @@
         </a>
         @livewire('search')
 
-        <div class="ml-3 relative">
+        <div class="mx-6 relative">
             @auth
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -49,9 +57,53 @@
                     </x-slot>
                 </x-dropdown>
             @else
-            <x-dropdown align="right" width="48">
-            </x-dropdown>
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <i class="fas fa-user-circle text-white text-xl cursor-pointer">
+
+                        </i>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <x-dropdown-link href="{{ route('login') }}">
+                            {{ __('Login') }}
+                        </x-jet-dropdown-link>
+
+                        <x-dropdown-link href="{{ route('register') }}">
+                            {{ __('Register') }}
+                        </x-jet-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
             @endauth
         </div>
+        @livewire('dropdown-cart' )
     </div>
+
+    <nav id="navigation-menu" class="bg-trueGray-700 bg-opacity-25 w-full absolute">
+        <div class="container h-full">
+            <div class="grid grid-cols-4 h-full relative">
+                <ul class="bg-white">
+                    @foreach ($categories as $category )
+                        <li class="navigation-link text-trueGray-500 hover:bg-Orange-500 hover:text-white ">
+
+                            <a href="" class="py-2 px-4 text-sm flex items-center">
+                                <span class="flex justify-center w-9">
+                                    {!!$category->icon!!}
+                                </span>
+                                {{__($category->name)}}
+                            </a>
+
+                            <div class="navigation-submenu bg-trueGray-100 absolute w-3/4 h-full top-0 right-0 hidden">
+                                <x-navigation-subcategories :category="$category"/>
+
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="col-span-3 bg-trueGray-100">
+                    <x-navigation-subcategories :category="$categories->first()"/>
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
