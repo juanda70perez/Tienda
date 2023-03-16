@@ -1,6 +1,6 @@
 <header class="bg-trueGray-700 sticky top-0" x-data="dropdown()">
     <div class='container flex items-center h-16  md:justify-start'>
-        <a :class="{ ' bg-opacity-100 text-Orange-500': open }" x-on:click="show()"
+        <a :class="{ ' bg-opacity-100 text-Orange-500':open }" x-on:click="show()"
             class="flex flex-col order-last md:order-first items-center justify-center px-2 md:px-4  text-white cursor-pointer font-semibold h-full">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -16,7 +16,7 @@
         </div>
 
 
-        <div class="flex md:mx-6 relative">
+        <div class="flex mx-1 md:mx-6 relative">
             @auth
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -74,7 +74,7 @@
         <div class="hidden md:block">
             @livewire('dropdown-cart')
         </div>
-        <x-dropdownLanguaje/>
+        <x-dropdownLanguaje />
     </div>
 
     <nav id="navigation-menu" x-cloak x-show="open" class="bg-trueGray-700 bg-opacity-25 w-full absolute">

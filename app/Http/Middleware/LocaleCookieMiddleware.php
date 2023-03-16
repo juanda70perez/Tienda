@@ -19,10 +19,6 @@ class LocaleCookieMiddleware
         if (Session::get("locale") != null){
             App::SetLocale(Session::get("locale"));
         }
-        else{
-            Session::put("locale","en");
-            App::setLocale(Session::get("locale"));
-        }
         return $next($request);
     }
 }

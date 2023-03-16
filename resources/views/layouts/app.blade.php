@@ -37,7 +37,8 @@
         <script>
             function dropdown(){
                 return {
-                    open: true,
+                    open: false,
+                    openLanguaje: false,
                     show(){
                         if(this.open){
                             //Se cierra el menu
@@ -52,7 +53,22 @@
                     close(){
                         this.open = false;
                         document.getElementsByTagName('html')[0].style.overflow = 'auto'
-                    }
+                    },
+                    showLanguaje(){
+                        if(this.openLanguaje){
+                            //Se cierra el menu
+                            this.openLanguaje = false;
+                            document.getElementsByTagName('html')[0].style.overflow = 'auto'
+                        }else{
+                            //Esta abriendo el menu
+                            this.openLanguaje = true;
+                            document.getElementsByTagName('html')[0].style.overflow = 'hidden'
+                        }
+                    },
+                    closeLanguaje(){
+                        this.openLanguaje = false;
+                        document.getElementsByTagName('html')[0].style.overflow = 'auto'
+                    },
                 }
             }
         </script>

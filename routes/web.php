@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use App\Http\Middleware\LocaleCookieMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +29,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/locale/{locale}',function($locale){
-    return redirect()->back()->withCookie('locale',$locale);
-});
+// Localization Route
+Route::get('/locale/{lange}',[LocalizationController::class,'setLang']);
 
 Route::middleware(LocaleCookieMiddleware::class)->group(function(){
 
