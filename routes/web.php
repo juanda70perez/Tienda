@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\LocaleCookieMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::get('/locale/{locale}',function($locale){
+    return redirect()->back()->withCookie('locale',$locale);
+});
+
+Route::middleware(LocaleCookieMiddleware::class)->group(function(){
+
 });
