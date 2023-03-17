@@ -1,4 +1,4 @@
-<header class="bg-trueGray-700 sticky top-0" x-data="dropdown()">
+<header class="bg-trueGray-700 sticky top-0 z-50" x-data="dropdown()">
     <div class='container flex items-center h-16  md:justify-start'>
         <a :class="{ ' bg-opacity-100 text-Orange-500':open }" x-on:click="show()"
             class="flex flex-col order-last md:order-first items-center justify-center px-2 md:px-4  text-white cursor-pointer font-semibold h-full">
@@ -71,10 +71,11 @@
                 </x-dropdown>
             @endauth
         </div>
+        <x-dropdownLanguaje />
         <div class="hidden md:block">
             @livewire('dropdown-cart')
         </div>
-        <x-dropdownLanguaje />
+
     </div>
 
     <nav id="navigation-menu" x-cloak x-show="open" class="bg-trueGray-700 bg-opacity-25 w-full absolute">

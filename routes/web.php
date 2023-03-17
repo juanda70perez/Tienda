@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\LocaleCookieMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', WelcomeController::class);
 
 Route::middleware([
     'auth:sanctum',
