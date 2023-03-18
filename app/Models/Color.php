@@ -11,25 +11,24 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $created_at
  * @property $updated_at
- *
  * @property ColorProduct[] $colorProducts
  * @property ColorSize[] $colorSizes
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Color extends Model
 {
-
     use HasFactory;
 
     protected $fillable = ['name'];
 
-
-    public function products(){
+    public function products()
+    {
         return $this->belongsToMany(Product::class);
     }
 
-    public function sizes(){
+    public function sizes()
+    {
         return $this->belongsToMany(size::class);
     }
 }

@@ -12,17 +12,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property $name
  * @property $created_at
  * @property $updated_at
- *
  * @property BrandCategory[] $brandCategories
  * @property Product[] $products
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Brand extends Model
 {
     use HasFactory;
-    static $rules = [
-		'name' => 'required',
+
+    public static $rules = [
+        'name' => 'required',
     ];
 
     protected $perPage = 20;
@@ -33,7 +33,6 @@ class Brand extends Model
      * @var array
      */
     protected $fillable = ['name'];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -50,8 +49,9 @@ class Brand extends Model
     {
         return $this->hasMany('App\Models\Product', 'brand_id', 'id');
     }
-    public function categories(){
+
+    public function categories()
+    {
         return $this->belongsToMany(Category::class);
     }
-
 }

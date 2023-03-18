@@ -22,20 +22,21 @@ class ProductFactory extends Factory
         $subcategory = Subcategory::all()->random();
         $category = $subcategory->category;
         $brand = $category->brands->random();
-        if ($subcategory->color){
+        if ($subcategory->color) {
             $quantity = null;
-        }else{
+        } else {
             $quantity = 15;
         }
+
         return [
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->text(),
-            'price' => $this->faker->randomElement([19.99,49.99,99.99]),
+            'price' => $this->faker->randomElement([19.99, 49.99, 99.99]),
             'subcategory_id' => $subcategory->id,
             'brand_id' => $brand->id,
             'quantity' => $quantity,
-            'status' => 2
+            'status' => 2,
         ];
     }
 }

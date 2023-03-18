@@ -1,4 +1,4 @@
-<div class="  relative inline-block text-left px-1  md:px-6 ">
+<div class="  relative inline-block text-left mx-1 md:mx-6 ">
     <div>
         <!-- boton afuera -->
         <button type="button" x-on:click="showLanguaje()"

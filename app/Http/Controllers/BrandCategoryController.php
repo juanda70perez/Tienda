@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 /**
  * Class BrandCategoryController
- * @package App\Http\Controllers
  */
 class BrandCategoryController extends Controller
 {
@@ -32,13 +31,13 @@ class BrandCategoryController extends Controller
     public function create()
     {
         $brandCategory = new BrandCategory();
+
         return view('brand-category.create', compact('brandCategory'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +53,7 @@ class BrandCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +66,7 @@ class BrandCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +79,6 @@ class BrandCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  BrandCategory $brandCategory
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, BrandCategory $brandCategory)
@@ -95,8 +92,9 @@ class BrandCategoryController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Exception
      */
     public function destroy($id)

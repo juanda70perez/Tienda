@@ -15,21 +15,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property $icon
  * @property $created_at
  * @property $updated_at
- *
  * @property BrandCategory[] $brandCategories
  * @property Subcategory[] $subcategories
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Category extends Model
 {
     use HasFactory;
 
-    static $rules = [
-		'name' => 'required',
-		'slug' => 'required',
-		'image' => 'required',
-		'icon' => 'required',
+    public static $rules = [
+        'name' => 'required',
+        'slug' => 'required',
+        'image' => 'required',
+        'icon' => 'required',
     ];
 
     protected $perPage = 20;
@@ -39,8 +38,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','slug','image','icon'];
-
+    protected $fillable = ['name', 'slug', 'image', 'icon'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -58,11 +56,19 @@ class Category extends Model
         return $this->hasMany('App\Models\Subcategory', 'category_id', 'id');
     }
 
-    public function products(){
-        return $this->hasManyThrough(Product::class,Subcategory::class);
+    public function products()
+    {
+        return $this->hasManyThrough(Product::class, Subcategory::class);
     }
-    public function brands(){
+
+    public function brands()
+    {
         return $this->belongsToMany(Brand::class);
     }
 
+    //url amigables
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 /**
  * Class SizeController
- * @package App\Http\Controllers
  */
 class SizeController extends Controller
 {
@@ -32,13 +31,13 @@ class SizeController extends Controller
     public function create()
     {
         $size = new Size();
+
         return view('size.create', compact('size'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +53,7 @@ class SizeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +66,7 @@ class SizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +79,6 @@ class SizeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Size $size
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Size $size)
@@ -95,8 +92,9 @@ class SizeController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Exception
      */
     public function destroy($id)

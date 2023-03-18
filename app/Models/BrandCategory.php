@@ -12,18 +12,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property $category_id
  * @property $created_at
  * @property $updated_at
- *
  * @property Brand $brand
  * @property Category $category
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class BrandCategory extends Model
 {
-    
-    static $rules = [
-		'brand_id' => 'required',
-		'category_id' => 'required',
+    public static $rules = [
+        'brand_id' => 'required',
+        'category_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -33,8 +31,7 @@ class BrandCategory extends Model
      *
      * @var array
      */
-    protected $fillable = ['brand_id','category_id'];
-
+    protected $fillable = ['brand_id', 'category_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -43,7 +40,7 @@ class BrandCategory extends Model
     {
         return $this->hasOne('App\Models\Brand', 'id', 'brand_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -51,6 +48,4 @@ class BrandCategory extends Model
     {
         return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
-    
-
 }

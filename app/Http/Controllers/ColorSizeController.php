@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 /**
  * Class ColorSizeController
- * @package App\Http\Controllers
  */
 class ColorSizeController extends Controller
 {
@@ -32,13 +31,13 @@ class ColorSizeController extends Controller
     public function create()
     {
         $colorSize = new ColorSize();
+
         return view('color-size.create', compact('colorSize'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +53,7 @@ class ColorSizeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +66,7 @@ class ColorSizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +79,6 @@ class ColorSizeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  ColorSize $colorSize
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ColorSize $colorSize)
@@ -95,8 +92,9 @@ class ColorSizeController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Exception
      */
     public function destroy($id)

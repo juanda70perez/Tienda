@@ -18,11 +18,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property $brand_id
  * @property $created_at
  * @property $updated_at
- *
  * @property Brand $brand
  * @property ColorProduct[] $colorProducts
  * @property Subcategory $subcategory
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Product extends Model
@@ -30,16 +29,17 @@ class Product extends Model
     use HasFactory;
 
     const BORRADOR = 1;
+
     const PUBLICADO = 2;
 
-    static $rules = [
-		'name' => 'required',
-		'slug' => 'required',
-		'description' => 'required',
-		'price' => 'required',
-		'quantity' => 'required',
-		'subcategory_id' => 'required',
-		'brand_id' => 'required',
+    public static $rules = [
+        'name' => 'required',
+        'slug' => 'required',
+        'description' => 'required',
+        'price' => 'required',
+        'quantity' => 'required',
+        'subcategory_id' => 'required',
+        'brand_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -49,8 +49,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','slug','description','price','quantity','subcategory_id','brand_id'];
-
+    protected $fillable = ['name', 'slug', 'description', 'price', 'quantity', 'subcategory_id', 'brand_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -75,15 +74,20 @@ class Product extends Model
     {
         return $this->hasOne('App\Models\Subcategory', 'id', 'subcategory_id');
     }
-    public function colors(){
+
+    public function colors()
+    {
         return $this->belongsToMany(Color::class);
     }
-    public function sizes(){
+
+    public function sizes()
+    {
         return $this->hasMany(Size::class);
     }
-    //relacion uno a muchos polimorfica
-    public function images(){
-        return $this->morphMany(Image::class,"imageable");
-    }
 
+    //relacion uno a muchos polimorfica
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

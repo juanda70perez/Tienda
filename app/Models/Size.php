@@ -10,15 +10,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $created_at
  * @property $updated_at
- *
  * @property ColorSize[] $colorSizes
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Size extends Model
 {
-
-    static $rules = [
+    public static $rules = [
     ];
 
     protected $perPage = 20;
@@ -30,7 +28,6 @@ class Size extends Model
      */
     protected $fillable = [];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -38,18 +35,24 @@ class Size extends Model
     {
         return $this->hasMany('App\Models\ColorSize', 'size_id', 'id');
     }
-    public function brand(){
+
+    public function brand()
+    {
         return $this->belongsTo(Brand::class);
     }
 
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class);
     }
+
     public function colors()
     {
         return $this->belongsToMany(Color::class);
     }
-    public function sizes(){
+
+    public function sizes()
+    {
         return $this->hasMany(Size::class);
     }
 }

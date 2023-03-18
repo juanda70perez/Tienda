@@ -17,22 +17,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property $category_id
  * @property $created_at
  * @property $updated_at
- *
  * @property Category $category
  * @property Product[] $products
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Subcategory extends Model
 {
     use HasFactory;
-    static $rules = [
-		'name' => 'required',
-		'slug' => 'required',
-		'image' => 'required',
-		'color' => 'required',
-		'size' => 'required',
-		'category_id' => 'required',
+
+    public static $rules = [
+        'name' => 'required',
+        'slug' => 'required',
+        'image' => 'required',
+        'color' => 'required',
+        'size' => 'required',
+        'category_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -42,8 +42,7 @@ class Subcategory extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','slug','image','color','size','category_id'];
-
+    protected $fillable = ['name', 'slug', 'image', 'color', 'size', 'category_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -61,11 +60,15 @@ class Subcategory extends Model
     {
         return $this->hasMany('App\Models\Product', 'subcategory_id', 'id');
     }
+
     //Relacion muchos a muchos
-    public function colors(){
+    public function colors()
+    {
         return $this->hasMany(Color::class);
     }
-    public function sizes(){
+
+    public function sizes()
+    {
         return $this->hasMany(Size::class);
     }
 }

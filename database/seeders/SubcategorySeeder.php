@@ -3,10 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Subcategory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-
 
 class SubcategorySeeder extends Seeder
 {
@@ -22,7 +20,7 @@ class SubcategorySeeder extends Seeder
                 'category_id' => 1,
                 'name' => 'Celulares y smartphones',
                 'slug' => Str::slug('Celulares y smartphones'),
-                'color' => true
+                'color' => true,
             ],
 
             [
@@ -113,7 +111,7 @@ class SubcategorySeeder extends Seeder
                 'name' => 'Mujeres',
                 'slug' => Str::slug('Mujeres'),
                 'color' => true,
-                'size' => true
+                'size' => true,
             ],
 
             [
@@ -121,7 +119,7 @@ class SubcategorySeeder extends Seeder
                 'name' => 'Hombres',
                 'slug' => Str::slug('Hombres'),
                 'color' => true,
-                'size' => true
+                'size' => true,
             ],
 
             [

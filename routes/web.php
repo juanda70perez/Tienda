@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\LocaleCookieMiddleware;
@@ -18,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', WelcomeController::class);
 
+Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -29,8 +32,7 @@ Route::middleware([
 });
 
 // Localization Route
-Route::get('/locale/{lange}',[LocalizationController::class,'setLang']);
+Route::get('/locale/{lange}', [LocalizationController::class, 'setLang']);
 
-Route::middleware(LocaleCookieMiddleware::class)->group(function(){
-
+Route::middleware(LocaleCookieMiddleware::class)->group(function () {
 });

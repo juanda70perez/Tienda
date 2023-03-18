@@ -14,26 +14,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property $quantity
  * @property $created_at
  * @property $updated_at
- *
  * @property Color $color
  * @property Size $size
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class ColorSize extends Model
 {
-
     use HasFactory;
 
-    protected $table = "color_size";
+    protected $table = 'color_size';
 
     //Relacion uno a mucos inversa
-    public function color(){
+    public function color()
+    {
         return $this->belongsTo(Color::class);
     }
 
-    public function size(){
+    public function size()
+    {
         return $this->belongsTo(Size::class);
     }
-
 }

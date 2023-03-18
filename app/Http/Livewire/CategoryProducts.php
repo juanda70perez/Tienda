@@ -9,10 +9,12 @@ class CategoryProducts extends Component
     public $category;
 
     public $products = [];
-    public function loadPosts(){
-        $this->products = $this->category->products()->where('status',2)->take(20)->get();
 
-        $this->emit('glider',$this->category->id);
+    public function loadPosts()
+    {
+        $this->products = $this->category->products()->where('status', 2)->take(20)->get();
+
+        $this->emit('glider', $this->category->id);
     }
 
     public function render()

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 /**
  * Class BrandController
- * @package App\Http\Controllers
  */
 class BrandController extends Controller
 {
@@ -32,13 +31,13 @@ class BrandController extends Controller
     public function create()
     {
         $brand = new Brand();
+
         return view('brand.create', compact('brand'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +53,7 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +66,7 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +79,6 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Brand $brand
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Brand $brand)
@@ -95,8 +92,9 @@ class BrandController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Exception
      */
     public function destroy($id)
