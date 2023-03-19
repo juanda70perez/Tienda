@@ -61,7 +61,7 @@
                                 </figure>
                                 <div class="py-4 px-6">
                                     <h1 class="text-lg font-semibold">
-                                        <a href="#">
+                                        <a href="{{route('products.show',$product)}}">
                                             {{ Str::limit($product->name, 20) }}
                                         </a>
                                     </h1>
@@ -110,9 +110,9 @@
                                         <div class=" text-center text-lg mx-3">
                                             ${{$product->price}}
                                         </div>
-                                        <x-danger-button>
+                                        <x-danger-link href="{{route('products.show',$product)}}">
                                             {{__('See more')}}
-                                        </x-danger-button>
+                                        </x-danger-link>
                                     </div>
 
                                 </div>

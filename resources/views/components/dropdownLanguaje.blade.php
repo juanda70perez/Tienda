@@ -19,9 +19,9 @@
 
         <!-- Lista de contenido-->
         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-        <a href="locale/en" class=" hover:bg-trueGray-400  text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        <a href="{{route('locale','en')}}" class=" hover:bg-trueGray-400  text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
             id="menu-item-0">{{ __('English') }}</a>
-        <a href="locale/es" class=" hover:bg-trueGray-400 text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+        <a href="{{route('locale','es')}}" class=" hover:bg-trueGray-400 text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
             id="menu-item-1">{{ __('Spanish') }}</a>
 
     </div>

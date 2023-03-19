@@ -1,10 +1,8 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('template_title')
-    Product
-@endsection
 
-@section('content')
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -35,7 +33,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Name</th>
 										<th>Slug</th>
 										<th>Description</th>
@@ -51,7 +49,7 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $product->name }}</td>
 											<td>{{ $product->slug }}</td>
 											<td>{{ $product->description }}</td>
@@ -80,4 +78,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+<x-app-layout>
