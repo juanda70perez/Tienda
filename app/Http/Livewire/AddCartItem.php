@@ -6,15 +6,27 @@ use Livewire\Component;
 
 class AddCartItem extends Component
 {
+    public $product;
+
+    public $quantity;
+
     public $qty = 1;
 
-    public function decrement(){
+    public function mount()
+    {
+        $this->quantity = $this->product->quantity;
+    }
 
-        $this->qty= $this->qty-1;
+    public function decrement()
+    {
+        $this->qty = $this->qty - 1;
     }
-    public function increment(){
-        $this->qty= $this->qty+1;
+
+    public function increment()
+    {
+        $this->qty = $this->qty + 1;
     }
+
     public function render()
     {
         return view('livewire.add-cart-item');

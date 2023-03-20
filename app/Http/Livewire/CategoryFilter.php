@@ -17,7 +17,7 @@ class CategoryFilter extends Component
 
     public $marca;
 
-    public $view = "list";
+    public $view = 'list';
 
     public function clear()
     {

@@ -22,7 +22,7 @@ Route::get('/', WelcomeController::class);
 
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
-Route::get('products/{product}',[ProductController::class,'show'])->name('products.show');
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

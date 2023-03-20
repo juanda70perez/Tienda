@@ -30,7 +30,7 @@
                 </div>
                 <div>
                     <p class="text-lg font-semibold  tex-bg-trueGray-700 my-4">
-                        ${{$product->description}}
+                        {{$product->description}}
                     </p>
                 </div>
                 <p class="text-2xl font-semibold  text-bg-trueGray-700 my-4">
