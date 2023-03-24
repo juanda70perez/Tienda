@@ -26,6 +26,16 @@ class AddCartItemSize extends Component
         $this->sizes = $this->product->sizes;
     }
 
+    public function decrement()
+    {
+        $this->qty = $this->qty - 1;
+    }
+
+    public function increment()
+    {
+        $this->qty = $this->qty + 1;
+    }
+
     public function updatedSizeId($value)
     {
         $size = Size::find($value);

@@ -17,6 +17,8 @@
         @livewireStyles
         {{--flexslitder--}}
         <link rel="stylesheet" href="{{asset('vendor/FlexSlider/flexslider.css')}}">
+        {{--sweetalertt --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.js" integrity="sha512-AZURF+lGBgrV0WM7dsCFwaQEltUV5964wxMv+TSzbb6G1/Poa9sFxaCed8l8CcFRTiP7FsCgCyOm/kf1LARyxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -26,6 +28,9 @@
 
         {{-- FlexSlider --}}
         <script src="{{ asset('vendor/FlexSlider/jquery.flexslider-min.js') }}"></script>
+
+        {{--sweetalertt --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="font-sans antialiased">
         <x-banner />

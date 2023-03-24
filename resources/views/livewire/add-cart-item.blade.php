@@ -20,7 +20,7 @@
             </x-secondary-button>
         </div>
         <div class="ml-2 flex-1">
-            <x-my-button color="Orange" class="w-full">
+            <x-my-button wire:click="addItem" wire:loading.attr="disabled" wire:target="addItem" color="Orange" class="w-full">
                 {{ __('Add to shopping cart') }}
             </x-my-button>
         </div>

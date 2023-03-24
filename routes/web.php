@@ -38,3 +38,6 @@ Route::get('/locale/{lange}', [LocalizationController::class, 'setLang'])->name(
 
 Route::middleware(LocaleCookieMiddleware::class)->group(function () {
 });
+Route::get('prueba', function () {
+    \Cart::destroy();
+});
