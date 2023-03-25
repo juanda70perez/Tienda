@@ -21,6 +21,8 @@ class AddCartItemSize extends Component
 
     public $qty = 1;
 
+    protected $listeners = ['addItem'];
+
     public function mount()
     {
         $this->sizes = $this->product->sizes;

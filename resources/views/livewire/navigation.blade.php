@@ -8,7 +8,7 @@
             </svg>
             <span class="text-sm hidden md:block">{{ __('Categories') }}</span>
         </a>
-        <a href="" class="flex-1 md:flex-none md:mx-6 ">
+        <a href="/" class="flex-1 md:flex-none md:mx-6 ">
             <x-application-mark class="block h-9 w-auto" />
         </a>
         <div class="flex-1 hidden md:block">

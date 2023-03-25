@@ -20,6 +20,8 @@ class AddCartItemColor extends Component
 
     public $options = [];
 
+    protected $listeners = ['addItem'];
+
     public function mount()
     {
         $this->colors = $this->product->colors;

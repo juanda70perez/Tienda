@@ -14,6 +14,8 @@ class AddCartItem extends Component
 
     public $qty = 1;
 
+    protected $listeners = ['addItem'];
+
     public $options = [];
 
     public function mount()
