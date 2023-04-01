@@ -97,6 +97,7 @@
                                 <x-navigation-subcategories :category="$category" />
 
                             </div>
+
                         </li>
                     @endforeach
                 </ul>

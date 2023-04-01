@@ -10,10 +10,6 @@
                         {{ __($subcategory->name) }}
                     </a>
                 </li>
-                <div class="navigation-submenu bg-gray-100 absolute w-3/4 h-full top-0 right-0 hidden">
-
-
-                </div>
             @endforeach
         </ul>
     </div>

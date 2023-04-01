@@ -63,7 +63,7 @@
                             {{ __('Total') }}
                         </span>: $ {{ Cart::subtotal() }}
                     </p>
-                    <x-button-link href="#" color="Orange" class="w-full">
+                    <x-button-link href="{{route('shopping-cart')}}" color="Orange" class="w-full">
                         {{ __('Go to shopping cart') }}
                     </x-button-link>
 
