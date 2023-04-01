@@ -12,6 +12,16 @@
             </option>
         @endforeach
     </select>
+    <p class="text-trueGray-700 my-4">
+        <span class="font-semibold">
+            {{ __('Available stock') }}:
+        </span>
+        @if ($quantity)
+            {{$quantity}}
+        @else
+        {{ $product->stock }}
+        @endif
+    </p>
     <div class="flex mt-4">
         <div class="mr-4">
             <x-secondary-button disabled x-bind:disabled="$wire.qty <= 1" wire:loading.attr="disabled"
@@ -28,7 +38,7 @@
         </div>
         <div class="ml-2 flex-1">
             <x-my-button
-                x-bind:disabled="!$wire.quantity" wire:click="$emit('saveProduct',{{$product->id}})"
+                x-bind:disabled="!$wire.quantity" x-bind:disabled="$wire.qty > $wire.quantity" wire:click="$emit('saveProduct',{{$product->id}})"
                 color="Orange" class="w-full">
                 {{ __('Add to shopping cart') }}
             </x-my-button>

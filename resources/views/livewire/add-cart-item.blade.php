@@ -1,7 +1,7 @@
 <div x-data>
     <p class="text-trueGray-700 mb-4">
         <span class="font-semibold">
-            {{ __('Available stock') }}: {{ $quantity }}
+            {{ __('Available stock') }}: {{ $product->stock }}
         </span>
 
     </p>
@@ -20,7 +20,7 @@
             </x-secondary-button>
         </div>
         <div class="ml-2 flex-1">
-            <x-my-button  wire:click="$emit('saveProduct',{{$product->id}})"
+            <x-my-button x-bind:disabled="$wire.qty > $wire.quantity" wire:click="$emit('saveProduct',{{$product->id}})"
                  color="Orange" class="w-full">
                 {{ __('Add to shopping cart') }}
             </x-my-button>

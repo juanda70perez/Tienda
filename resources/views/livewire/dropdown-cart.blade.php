@@ -36,6 +36,11 @@
                                        {{__('Color')}}: {{__($item->options['color'])}}
                                     </p>
                                 @endisset
+                                @isset($item->options['size'])
+                                    <p class="mx-2">
+                                       {{__('Size')}}: {{__($item->options['size'])}}
+                                    </p>
+                                @endisset
                             </div>
 
                             <p>

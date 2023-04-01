@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\LocaleCookieMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('search', SearchController::class)->name('search');
 // Localization Route
 Route::get('/locale/{lange}', [LocalizationController::class, 'setLang'])->name('locale');
 

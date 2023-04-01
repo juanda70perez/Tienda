@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -50,6 +51,26 @@ class Product extends Model
      * @var array
      */
     protected $fillable = ['name', 'slug', 'description', 'price', 'quantity', 'subcategory_id', 'brand_id'];
+
+    //accesores
+
+    public function getStockAttribute()
+    {
+        $quantity = 0;
+        if ($this->subcategory->size) {
+            $quantity = ColorSize::whereHas('size.product', function (Builder $query) {
+                $query->where('id', $this->id);
+            })->sum('quantity');
+        } elseif ($this->subcategory->color) {
+            $quantity = ColorProduct::whereHas('product', function (Builder $query) {
+                $query->where('id', $this->id);
+            })->sum('quantity');
+        } else {
+            $quantity = $this->quantity;
+        }
+
+        return $quantity;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
