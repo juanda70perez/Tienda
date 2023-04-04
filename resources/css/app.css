@@ -1,6 +1,7 @@
 @import 'container.css';
 @import 'nav.css';
 @import 'form.css';
+@import 'cookie.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

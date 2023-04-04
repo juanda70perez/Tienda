@@ -56,7 +56,7 @@
                         <li class="bg-white rounded-lg shadow">
                             <article>
                                 <figure>
-                                    <img class="h-48 w-full object-cover object-center"
+                                    <img class="h-48 w-full object-cover object-center" loading="lazy"
                                         src="{{ Storage::url($product->images->first()->url) }}" alt="">
                                 </figure>
                                 <div class="py-4 px-6">

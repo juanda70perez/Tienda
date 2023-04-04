@@ -14,7 +14,7 @@
         </ul>
     </div>
     <div class="col-span-3">
-        <img class="h-64 w-full object-cover object-center" src="{{ Storage::url($category->image) }}"
+        <img class="h-64 w-full object-cover object-center" loading="lazy" src="{{ Storage::url($category->image) }}"
             alt="">
     </div>
 </div>

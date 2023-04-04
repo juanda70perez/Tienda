@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WelcomeController;
@@ -20,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('prueba', function () {
+    return view('livewire.cookie-consent');
+});
 Route::get('/', WelcomeController::class);
 
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
@@ -35,7 +38,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::Get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
+
+Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
+Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
 
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 Route::get('search', SearchController::class)->name('search');

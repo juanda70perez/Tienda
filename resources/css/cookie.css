@@ -1,0 +1,28 @@
+#cookies-message {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    z-index: 9999;
+}
+
+#cookies-message p {
+    display: inline-block;
+    margin: 0;
+    line-height: 1.4;
+}
+
+#cookies-message button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#cookies-message button:hover {
+    background-color: #0069d9;
+}

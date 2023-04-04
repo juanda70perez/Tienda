@@ -22,12 +22,15 @@ return new class extends Migration
             $table->float('shipping_cost');
             $table->float('total');
             $table->json('content');
-            $table->string('adress');
-            $table->unsignedBigInteger('department_id');
+            $table->string('adress')->nullable();
+            $table->string('contact');
+            $table->string('phone');
+            $table->string('reference')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments');
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('district_id')->nullable();
             $table->foreign('district_id')->references('id')->on('districts');
         });
     }
