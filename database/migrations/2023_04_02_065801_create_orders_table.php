@@ -22,7 +22,7 @@ return new class extends Migration
             $table->float('shipping_cost');
             $table->float('total');
             $table->json('content');
-            $table->string('adress')->nullable();
+            $table->string('address')->nullable();
             $table->string('contact');
             $table->string('phone');
             $table->string('reference')->nullable();

@@ -3,17 +3,18 @@
         <div class="bg-white rounded-lg shadow p-6">
             <div class="mb-4">
                 <x-label value="{{ __('Name of contact') }}" />
-                <x-input name="contact" value="{{old('contact')}}" wire:model.defer="contact" type="text"
+                <x-input name="contact" wire:model.defer="contact" type="text"
                     placeholder="{{ __('Enter the name of the person who will receive the product') }}" class="w-full" />
                 <x-input-error for='contact'></x-input-error>
             </div>
             <div>
                 <x-label value="{{ __('Contact mobile number') }}" />
-                <x-input  name="phone" value="{{old('phone')}}" wire:model.defer="phone" type="text" placeholder="{{ __('Enter a contact mobile number') }}" class="w-full" />
+                <x-input name="phone" wire:model.defer="phone" type="text"
+                    placeholder="{{ __('Enter a contact mobile number') }}" class="w-full" />
                 <x-input-error for='phone'></x-input-error>
             </div>
         </div>
-        <div x-data="{envio_type: @entangle('envio_type')}">
+        <div x-data="{ envio_type: @entangle('envio_type') }">
             <p class="mt-6 mb-3 text-lg text-gray-700 font-semibold">
                 {{ __('Shipments') }}
             </p>
@@ -24,6 +25,8 @@
                 </span>
                 <span class="font semibold text-gray-700 ml-auto">
                     {{ __('Free') }}
+
+
                 </span>
             </label>
             <div class="bg-white rounded-lg shadow">
@@ -33,26 +36,30 @@
                         {{ 'Home deliveries' }}
                     </span>
                     <span class="font semibold text-gray-700 ml-auto">
-                        {{ __('Free') }}
+                        @if ($envio_type == 1 || !$shipping_cost == 0)
+                            ${{ $shipping_cost }}
+                        @else
+                            {{ __('Free') }}
+                        @endif
                     </span>
                 </label>
 
-                <div :class="{'hidden': envio_type != 1}" class="px-6 pb-6 grid grid-cols-2 gap-6 mb-4 hidden">
+                <div :class="{ 'hidden': envio_type != 1 }" class="px-6 pb-6 grid grid-cols-2 gap-6 mb-4 hidden">
                     {{-- Departamentos --}}
                     <div>
                         <x-label class="text-lg font-semibold mb-2" value="Departaments">
                         </x-label>
                         <select class="form-control w-full" wire:model="department_id">
                             <option value="" disabled selected>
-                                {{__('Select a department')}}
+                                {{ __('Select a department') }}
                             </option>
-                            @forelse ($departments as $department )
-                                <option value="{{$department->id}}">
-                                    {{__($department->name)}}
+                            @forelse ($departments as $department)
+                                <option value="{{ $department->id }}" name="department_id">
+                                    {{ __($department->name) }}
                                 </option>
                             @empty
                                 <p>
-                                    {{__('There is not data')}}
+                                    {{ __('There is not data') }}
                                 </p>
                             @endforelse
                         </select>
@@ -64,15 +71,15 @@
                         </x-label>
                         <select class="form-control w-full" wire:model="city_id">
                             <option value="" disabled selected>
-                                {{__('Select a city')}}
+                                {{ __('Select a city') }}
                             </option>
-                            @forelse ($cities as $city )
-                                <option value="{{$city->id}}">
-                                    {{__($city->name)}}
+                            @forelse ($cities as $city)
+                                <option value="{{ $city->id }}">
+                                    {{ __($city->name) }}
                                 </option>
                             @empty
                                 <p>
-                                    {{__('There is not data')}}
+                                    {{ __('There is not data') }}
                                 </p>
                             @endforelse
                         </select>
@@ -84,28 +91,28 @@
                         </x-label>
                         <select class="form-control w-full" wire:model="district_id">
                             <option value="" disabled selected>
-                                {{__('Select a district')}}
+                                {{ __('Select a district') }}
                             </option>
-                            @forelse ($districts as $district )
-                                <option value="{{$district->id}}">
-                                    {{__($district->name)}}
+                            @forelse ($districts as $district)
+                                <option value="{{ $district->id }}" name="district_id">
+                                    {{ __($district->name) }}
                                 </option>
                             @empty
                                 <p>
-                                    {{__('There is not data')}}
+                                    {{ __('There is not data') }}
                                 </p>
                             @endforelse
                         </select>
                         <x-input-error for="district_id"></x-input-error>
                     </div>
                     <div>
-                        <x-label value="{{__('Address')}}"></x-label>
-                        <x-input name="address" value="old('address')" class="w-full" wire:model="address" type="text"></x-input>
+                        <x-label value="{{ __('Address') }}"></x-label>
+                        <x-input name="address" class="w-full" wire:model="address" type="text"></x-input>
                         <x-input-error for="address"></x-input-error>
                     </div>
                     <div class="col-span-2">
                         <x-label value="Referencia"></x-label>
-                        <x-input name="references" value="old('references')" class="w-full" wire:model="references" type="text"></x-input>
+                        <x-input name="references" class="w-full" wire:model="references" type="text"></x-input>
                         <x-input-error for="references"></x-input-error>
                     </div>
                 </div>
@@ -158,43 +165,53 @@
             <hr class="mt-4 mb-3">
             <div class="text-gray-700">
                 <p class="flex justify-between items-center">
-                    {{__('Subtotal')}}:
+                    {{ __('Subtotal') }}:
                     <span>
-                        ${{Cart::subtotal()}}
+                        ${{ Cart::subtotal() }}
                     </span>
                 </p>
 
                 <p class="flex justify-between items-center">
-                    {{__('Shipment')}}
+                    {{ __('Shipment') }}
                     <span class="font-semibold">
-                        {{__('Free')}}
+                        @if ($envio_type == 1 || !$shipping_cost == 0 )
+                        ${{$shipping_cost}}
+                    @else
+                        {{ __('Free') }}
+                    @endif
                     </span>
                 </p>
                 <hr class="mt-4 mb-3">
                 <p class="flex justify-between items-center font-semibold">
                     <span class="text-lg">
-                        {{__('Total')}}:
+                        {{ __('Total') }}:
                     </span>
                     <span>
-                        ${{Cart::total()}}
+                        @if ($envio_type == 1)
+                            ${{ Cart::subtotal() + $shipping_cost}}
+                        @else
+                            ${{Cart::subtotal()}}
+                        @endif
+
                     </span>
                 </p>
             </div>
         </div>
         <hr>
-            <p class="text-sm text-gray-700 mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, inventore accusamus nemo magnam nesciunt
-                maxime obcaecati quia quam nam, beatae ut ex necessitatibus voluptatibus voluptatem. Reiciendis possimus
-                aliquam nesciunt omnis.
-                <a href="" class="font-semibold text-Orange-500">
-                    {{ __('Privacy Policy') }}
-                </a>
-            </p>
-            <div>
-                <x-button wire:loading.attr="disabled" wire:target="create_order" wire:click="create_order" class="mt-6 mb-4 justify-center">
-                    {{ __('Continue shopping') }}
-                </x-button>
+        <p class="text-sm text-gray-700 mt-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, inventore accusamus nemo magnam nesciunt
+            maxime obcaecati quia quam nam, beatae ut ex necessitatibus voluptatibus voluptatem. Reiciendis possimus
+            aliquam nesciunt omnis.
+            <a href="" class="font-semibold text-Orange-500">
+                {{ __('Privacy Policy') }}
+            </a>
+        </p>
+        <div>
+            <x-button wire:loading.attr="disabled" wire:target="create_order" wire:click="create_order"
+                class="mt-6 mb-4 justify-center">
+                {{ __('Continue shopping') }}
+            </x-button>
 
-            </div>
+        </div>
     </div>
 </div>
