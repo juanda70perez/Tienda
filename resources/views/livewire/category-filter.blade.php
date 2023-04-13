@@ -65,7 +65,7 @@
                                             {{ Str::limit($product->name, 20) }}
                                         </a>
                                     </h1>
-                                    <p class="font-bold text-trueGray-700">$ {{ $product->price }}</p>
+                                    <p class="font-bold text-trueGray-700">$ {{ number_format($product->price,0,".",",")}}</p>
                                 </div>
                             </article>
                         </li>

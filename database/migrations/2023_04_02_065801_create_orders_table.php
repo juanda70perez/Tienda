@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->enum('status', [Order::PENDIENTE, Order::RECIBIDO, Order::ENTREGADO, Order::ENVIADO, Order::ANULADO])->default(Order::PENDIENTE);
-            $table->enum('envio_type', [0, 1]);
+            $table->enum('envio_type', [1, 2]);
             $table->float('shipping_cost');
             $table->float('total');
             $table->json('content');

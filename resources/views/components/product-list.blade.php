@@ -33,7 +33,7 @@
            </div>
             <div class="flex justify-between py-4 px-6  ">
                 <div class=" text-center text-lg mx-3">
-                    ${{$product->price}}
+                    ${{number_format($product->price,0,".",",")}}
                 </div>
                 <x-danger-link href="{{route('products.show',$product)}}">
                     {{__('See more')}}

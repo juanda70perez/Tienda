@@ -33,7 +33,7 @@
                     </p>
                 </div>
                 <p class="text-2xl font-semibold  text-bg-trueGray-700 my-4">
-                    ${{ $product->price }}
+                    ${{number_format($product->price,0,".",",") }}
                 </p>
                 <div class="bg-white rounded-lg shadow-lg mb-6">
                     <div class="p-4 flex items-center">

@@ -43,7 +43,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <span>${{ $item->price }}</span>
+                                <span>${{ number_format($item->price,0,'.',',') }}</span>
                                 <a wire:click="delete('{{$item->rowId}}')" wire:loading.class="text-red-600 opacity-25" wire:target="delete('{{$item->rowId}}')" class="ml-6 cursor-pointer hover:text-red-600">
                                     <i class="fas fa-trash"></i>
                                 </a>
@@ -62,7 +62,7 @@
 
                             </td>
                             <td class="text-center">
-                                ${{ $item->price * $item->qty }}
+                                ${{ number_format($item->price * $item->qty,0,'.',',') }}
                             </td>
                         </tr>
                     @endforeach
@@ -93,7 +93,7 @@
                 <div>
                     <p class="text-gray-700">
                         <span class="font-bold text-lg">
-                            {{__('Total')}}: ${{Cart::subtotal()}}
+                            {{__('Total')}}: ${{ number_format(str_replace(',', '',Cart::subtotal()),0,'.',',')}}
                         </span>
                     </p>
                 </div>

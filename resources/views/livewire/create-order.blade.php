@@ -19,7 +19,8 @@
                 {{ __('Shipments') }}
             </p>
             <label class="mb-4 bg-white rounded-lg shadow px-6 py-4 flex items-center">
-                <input x-model="envio_type" type="radio" value="0" name="envio_type=0" class="text-gray-600">
+                <input x-model="envio_type" type="radio" value="1" name="envio_type=1" class="text-gray-600">
+                <span class="mx-2 text-gray-700">
                 <span class="mx-2 text-gray-700">
                     {{ 'Store Pickup' }}
                 </span>
@@ -31,20 +32,20 @@
             </label>
             <div class="bg-white rounded-lg shadow">
                 <label class="px-6 py-4 flex items-center">
-                    <input x-model="envio_type" type="radio" value="1" name="envio_type=1" class="text-gray-600">
+                    <input x-model="envio_type" type="radio" value="2" name="envio_type=2" class="text-gray-600">
                     <span class="mx-2 text-gray-700">
                         {{ 'Home deliveries' }}
                     </span>
                     <span class="font semibold text-gray-700 ml-auto">
                         @if ($envio_type == 1 || !$shipping_cost == 0)
-                            ${{ $shipping_cost }}
+                            ${{ number_format($shipping_cost,0,'.',',') }}
                         @else
                             {{ __('Free') }}
                         @endif
                     </span>
                 </label>
 
-                <div :class="{ 'hidden': envio_type != 1 }" class="px-6 pb-6 grid grid-cols-2 gap-6 mb-4 hidden">
+                <div :class="{ 'hidden': envio_type != 2 }" class="px-6 pb-6 grid grid-cols-2 gap-6 mb-4 hidden">
                     {{-- Departamentos --}}
                     <div>
                         <x-label class="text-lg font-semibold mb-2" value="Departaments">
@@ -167,14 +168,14 @@
                 <p class="flex justify-between items-center">
                     {{ __('Subtotal') }}:
                     <span>
-                        ${{ Cart::subtotal() }}
+                        ${{ str_replace(',', '', Cart::subtotal()) }}
                     </span>
                 </p>
 
                 <p class="flex justify-between items-center">
                     {{ __('Shipment') }}
                     <span class="font-semibold">
-                        @if ($envio_type == 1 || !$shipping_cost == 0 )
+                        @if ($envio_type == 2 || !$shipping_cost == 0 )
                         ${{$shipping_cost}}
                     @else
                         {{ __('Free') }}
@@ -187,10 +188,10 @@
                         {{ __('Total') }}:
                     </span>
                     <span>
-                        @if ($envio_type == 1)
-                            ${{ Cart::subtotal() + $shipping_cost}}
+                        @if ($envio_type == 2)
+                            ${{number_format(str_replace(',', '', Cart::subtotal())+ $shipping_cost,0,'.',',') }}
                         @else
-                            ${{Cart::subtotal()}}
+                            ${{number_format(str_replace(',', '', Cart::subtotal()),0,'.',',')}}
                         @endif
 
                     </span>

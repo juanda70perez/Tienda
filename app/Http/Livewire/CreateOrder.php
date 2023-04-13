@@ -31,9 +31,9 @@ class CreateOrder extends Component
 
     public $references;
 
-    public $shipping_cost = 0;
+    public $shipping_cost = 0.0;
 
-    public $envio_type = 0;
+    public $envio_type = 1;
 
     public $rules = [
         'contact' => 'required',
@@ -43,6 +43,7 @@ class CreateOrder extends Component
 
     public function mount()
     {
+        $shipping_cost = 0.0;
         $this->departments = Department::all();
         if (old('department_id')) {
             $this->department_id = old('department_id');
@@ -97,7 +98,7 @@ class CreateOrder extends Component
     {
         $rules = $this->rules;
 
-        if ($this->envio_type == 1) {
+        if ($this->envio_type == 2) {
             $rules['department_id'] = 'required';
             $rules['city_id'] = 'required';
             $rules['district_id'] = 'required';
@@ -112,10 +113,10 @@ class CreateOrder extends Component
         $order->contact = $this->contact;
         $order->phone = $this->phone;
         $order->envio_type = $this->envio_type;
-        $order->shipping_cost = 0;
-        $order->total = $this->shipping_cost + Cart::subtotal();
+        $order->shipping_cost = $this->shipping_cost;
+        $order->total = $this->shipping_cost + str_replace(',', '', Cart::subtotal());
         $order->content = Cart::content();
-        if ($this->envio_type == 1) {
+        if ($this->envio_type == 2) {
             $order->shipping_cost = $this->shipping_cost;
             $order->department_id = $this->department_id;
             $order->city_id = $this->city_id;
@@ -131,7 +132,6 @@ class CreateOrder extends Component
             // ]);
         }
         $order->save();
-
         Cart::destroy();
 
         return redirect()->route('orders.payment', $order);
